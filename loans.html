@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auswise Loans — SMSF & Home Loan Specialists</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1D3A;
+  --navy-light: #132D54;
+  --gold: #C8963E;
+  --gold-light: #E4B96A;
+  --cream: #FDF8F0;
+  --white: #FFFFFF;
+  --gray-100: #F5F5F7;
+  --gray-200: #E8E8EC;
+  --gray-400: #9B9BA7;
+  --gray-600: #5C5C6D;
+  --gray-800: #2D2D3A;
+  --teal: #1A8A7D;
+  --teal-light: #23B5A5;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 30px rgba(11,29,58,0.08);
+  --shadow-lg: 0 12px 50px rgba(11,29,58,0.12);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* ─── LOGO ──────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(200,150,62,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.logo-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+.logo-icon svg { width: 26px; height: 26px; position: relative; z-index: 1; }
+.logo-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.55rem;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+.logo-text span { color: var(--gold); }
+
+/* ─── NAVIGATION ─────────────────────────────── */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(11,29,58,0.06);
+  transition: var(--transition);
+}
+header.scrolled {
+  box-shadow: 0 2px 30px rgba(11,29,58,0.08);
+}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--gray-600);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 100px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--navy);
+  background: var(--gray-100);
+}
+.nav-cta {
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  font-weight: 600 !important;
+  padding: 10px 26px !important;
+}
+.nav-cta:hover {
+  background: var(--navy-light) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(11,29,58,0.25);
+}
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ─── PAGE SECTIONS ──────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ─── HERO ───────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 100px 24px 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 70% 40%, rgba(200,150,62,0.07), transparent),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26,138,125,0.05), transparent),
+    linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+  z-index: 0;
+}
+.hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26,138,125,0.08);
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 6px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 22px;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.45s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+}
+.rate-display {
+  text-align: center;
+  padding: 28px 0;
+}
+.rate-label {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rate-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4.5rem;
+  color: var(--navy);
+  line-height: 1;
+}
+.rate-number sup {
+  font-size: 1.8rem;
+  top: -1.5em;
+}
+.rate-suffix {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: var(--gray-400);
+  font-weight: 400;
+}
+.rate-comparison {
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.85rem;
+  padding-top: 12px;
+  border-top: 1px dashed var(--gray-200);
+}
+.rate-comparison strong { color: var(--gray-600); }
+.hero-card-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+.hero-feature-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(26,138,125,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.hero-feature-icon svg { width: 16px; height: 16px; color: var(--teal); }
+
+/* Floating badges */
+.float-badge {
+  position: absolute;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(11,29,58,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+}
+.float-badge:nth-child(2) { top: 20px; right: -20px; animation-delay: 0.5s; }
+.float-badge:nth-child(3) { bottom: 40px; left: -30px; animation-delay: 1s; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.float-icon.gold { background: rgba(200,150,62,0.12); }
+.float-icon.teal { background: rgba(26,138,125,0.1); }
+
+/* ─── BUTTONS ────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11,29,58,0.25);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--white);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,150,62,0.35);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--gray-200);
+}
+.btn-outline:hover {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-white {
+  background: var(--white);
+  color: var(--navy);
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* ─── TRUSTED BY ─────────────────────────────── */
+.trust-bar {
+  padding: 50px 24px;
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+.trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.trust-label {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.lender-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  opacity: 0.45;
+}
+.lender-logos span {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--gray-800);
+  letter-spacing: 0.02em;
+}
+
+/* ─── SECTION COMMON ─────────────────────────── */
+section { padding: 100px 24px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ─── SERVICES GRID ──────────────────────────── */
+.services-section { background: var(--gray-100); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover {
+  border-color: var(--gray-200);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.service-card:hover::after { transform: scaleX(1); }
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.service-icon.navy { background: rgba(11,29,58,0.06); }
+.service-icon.gold { background: rgba(200,150,62,0.1); }
+.service-icon.teal { background: rgba(26,138,125,0.08); }
+.service-icon svg { width: 26px; height: 26px; }
+.service-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.service-card p {
+  color: var(--gray-600);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.service-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+.service-link:hover { gap: 10px; color: var(--navy); }
+
+/* ─── WHY CHOOSE US ──────────────────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 50px;
+  align-items: center;
+}
+.why-features { display: flex; flex-direction: column; gap: 28px; }
+.why-item {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.why-item:hover { background: var(--gray-100); }
+.why-num {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.why-item h4 {
+  font-size: 1.05rem;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.why-item p {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+.why-visual {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 24px;
+  padding: 48px;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.why-visual::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(200,150,62,0.15), transparent);
+  top: -80px;
+  right: -80px;
+  border-radius: 50%;
+}
+.why-visual h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  position: relative;
+}
+.why-visual p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  position: relative;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+}
+.stat-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+.stat-text {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ─── SMSF PAGE ──────────────────────────────── */
+.page-hero {
+  padding: 140px 24px 80px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(200,150,62,0.1), transparent);
+  top: -150px;
+  right: -100px;
+  border-radius: 50%;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(26,138,125,0.08), transparent);
+  bottom: -200px;
+  left: -100px;
+  border-radius: 50%;
+}
+.page-hero .section-inner { position: relative; z-index: 1; }
+.page-hero .section-label { color: var(--gold-light); }
+.page-hero .section-label::before { background: var(--gold-light); }
+.page-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  line-height: 1.15;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+.page-hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* Product Cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 50px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.product-header {
+  padding: 32px 32px 24px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.product-tag {
+  display: inline-block;
+  background: rgba(26,138,125,0.08);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.product-tag.gold {
+  background: rgba(200,150,62,0.1);
+  color: var(--gold);
+}
+.product-header h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.product-header p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+}
+.product-rate {
+  padding: 24px 32px;
+  background: var(--gray-100);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.product-rate-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  color: var(--navy);
+}
+.product-rate-label {
+  color: var(--gray-400);
+  font-size: 0.85rem;
+}
+.product-body {
+  padding: 28px 32px;
+}
+.product-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.product-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+}
+.product-features li svg {
+  width: 18px;
+  height: 18px;
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* FAQ Section */
+.faq-list {
+  margin-top: 40px;
+  max-width: 760px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--gray-200);
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+.faq-q svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-q svg { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-bottom: 22px;
+}
+.faq-a p {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+}
+
+/* ─── CTA BANNER ─────────────────────────────── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 24px;
+  padding: 64px;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(200,150,62,0.12), transparent);
+  top: -100px;
+  left: -50px;
+  border-radius: 50%;
+}
+.cta-banner::after {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(26,138,125,0.08), transparent);
+  bottom: -80px;
+  right: -30px;
+  border-radius: 50%;
+}
+.cta-banner h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 14px;
+  position: relative;
+}
+.cta-banner p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+.cta-banner .btn { position: relative; }
+
+/* ─── CONTACT PAGE ───────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  margin-top: 50px;
+}
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-card {
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  padding: 26px;
+  display: flex;
+  gap: 16px;
+  transition: var(--transition);
+}
+.contact-card:hover {
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.contact-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-card-icon svg { width: 22px; height: 22px; color: var(--gold); }
+.contact-card h4 {
+  font-size: 0.95rem;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.contact-card p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+}
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--gray-200);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  color: var(--gray-800);
+  background: var(--gray-100);
+  transition: var(--transition);
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(200,150,62,0.08);
+}
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { margin-top: 24px; }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.6);
+  padding: 70px 24px 36px;
+  margin-top: 100px;
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo-text { color: var(--white); }
+.footer-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-top: 16px;
+  max-width: 300px;
+}
+.footer-col h4 {
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 5px 0;
+  transition: var(--transition);
+}
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-legal {
+  font-size: 0.78rem;
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.7;
+}
+
+/* ─── PROCESS STEPS ──────────────────────────── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 50px;
+}
+.step {
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+}
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 1.1rem;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 20px rgba(200,150,62,0.3);
+}
+.step h4 {
+  font-size: 1rem;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.step p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid,
+  .why-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  nav { height: 64px; }
+  .cta-banner { padding: 40px 28px; margin: 0 16px; }
+  .float-badge { display: none; }
+}
+@media (max-width: 600px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-card-features { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header id="header">
+  <nav>
+    <a href="#" class="logo" onclick="showPage('home')">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="logo-text">Auswise<span>Loans</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+      <li><a onclick="showPage('smsf')" id="nav-smsf">SMSF Loans</a></li>
+      <li><a onclick="showPage('homeloans')" id="nav-homeloans">Home Loans</a></li>
+      <li><a onclick="showPage('contact')" id="nav-contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Australian Credit Licence Holder</div>
+        <h1>Smart Lending for Your <em>Property Goals</em></h1>
+        <p class="hero-sub">SMSF lending, home mortgages, refinancing & investment loans — tailored by West Ryde's trusted lending specialists with 30+ years experience.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" onclick="showPage('smsf')">Explore SMSF Loans →</a>
+          <a class="btn btn-outline" onclick="showPage('homeloans')">Home Loans</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="float-badge" style="top:20px;right:-10px;">
+          <div class="float-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="2" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          40+ Lender Panel
+        </div>
+        <div class="float-badge" style="bottom:30px;left:-20px;">
+          <div class="float-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2" width="20" height="20"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          Fast Approvals
+        </div>
+        <div class="hero-card">
+          <div class="rate-display">
+            <div class="rate-label">SMSF Rates From</div>
+            <div class="rate-number">6.29<sup>%</sup></div>
+            <div class="rate-suffix">p.a. variable</div>
+          </div>
+          <div class="rate-comparison">Comparison rate <strong>6.65%</strong> p.a.*</div>
+          <div class="hero-card-features">
+            <div class="hero-feature">
+              <div class="hero-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              </div>
+              Residential & Commercial
+            </div>
+            <div class="hero-feature">
+              <div class="hero-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              Quick Turnaround
+            </div>
+            <div class="hero-feature">
+              <div class="hero-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              No Hidden Fees
+            </div>
+            <div class="hero-feature">
+              <div class="hero-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              Offset Available
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-label">We Work With Australia's Leading Lenders</div>
+      <div class="lender-logos">
+        <span>Liberty</span>
+        <span>Firstmac</span>
+        <span>La Trobe</span>
+        <span>Bluestone</span>
+        <span>Pepper Money</span>
+        <span>Thinktank</span>
+        <span>Granite</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="section-inner">
+      <div class="section-label">Our Services</div>
+      <div class="section-title">Lending Solutions Tailored to You</div>
+      <p class="section-sub">Whether you're investing through your super, buying your first home, or refinancing for a better deal — we make it simple.</p>
+      <div class="services-grid">
+        <div class="service-card" onclick="showPage('smsf')">
+          <div class="service-icon navy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B1D3A" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>SMSF Loans</h3>
+          <p>Leverage your self-managed super fund to invest in residential or commercial property. Competitive rates from 6.29% p.a.</p>
+          <span class="service-link">Learn more <span>→</span></span>
+        </div>
+        <div class="service-card" onclick="showPage('homeloans')">
+          <div class="service-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Home Loans</h3>
+          <p>First home buyers, upgraders & investors — access Australia's best home loan rates through our 40+ lender panel.</p>
+          <span class="service-link">Learn more <span>→</span></span>
+        </div>
+        <div class="service-card" onclick="showPage('homeloans')">
+          <div class="service-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>
+          </div>
+          <h3>Refinancing</h3>
+          <p>Already have a loan? Let us review your current rate and potentially save you thousands every year with a better deal.</p>
+          <span class="service-link">Learn more <span>→</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Why Auswise Loans</div>
+      <div class="section-title">30+ Years of Trusted Financial Expertise</div>
+      <p class="section-sub">Built on a foundation of integrity, local knowledge, and personalised service — right here in West Ryde, Sydney.</p>
+      <div class="why-grid">
+        <div class="why-features">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <h4>Extensive Lender Panel</h4>
+              <p>Access 40+ lenders including Liberty, Firstmac, La Trobe, Pepper Money, Bluestone, and more — ensuring you get the best fit.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <h4>SMSF Specialists</h4>
+              <p>Deep expertise in self-managed super fund lending for both residential and commercial property investments across Australia.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <h4>No Hidden Costs</h4>
+              <p>Transparent fee structures with no application fees and no settlement fees on select products. What you see is what you get.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <h4>Fast & Personal Service</h4>
+              <p>Real people, real conversations. We guide you from first enquiry through to settlement — often within 2 weeks.</p>
+            </div>
+          </div>
+        </div>
+        <div class="why-visual">
+          <h3>Your Property Journey Starts Here</h3>
+          <p>From first home buyers to seasoned SMSF investors, we've helped thousands of Australians unlock better lending outcomes.</p>
+          <div class="stat-grid">
+            <div class="stat-item">
+              <div class="stat-num">30+</div>
+              <div class="stat-text">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">40+</div>
+              <div class="stat-text">Lender Partners</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">$500M+</div>
+              <div class="stat-text">Loans Settled</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">98%</div>
+              <div class="stat-text">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:var(--gray-100);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">How It Works</div>
+      <div class="section-title">Simple 4-Step Process</div>
+      <p class="section-sub" style="margin:0 auto;">From initial enquiry to settlement — we keep it straightforward.</p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Free Consultation</h4>
+          <p>Tell us about your goals and financial position. We'll assess your options.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Loan Comparison</h4>
+          <p>We search 40+ lenders to find the best rate and structure for your situation.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Application</h4>
+          <p>We handle the paperwork, liaise with the lender, and keep you updated every step.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Settlement</h4>
+          <p>Your loan is approved and settled. We stay in touch for ongoing support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta-banner">
+      <h2>Ready to Explore Your Options?</h2>
+      <p>Book a free consultation with our lending specialists today. No obligation, just honest advice.</p>
+      <a class="btn btn-gold" onclick="showPage('contact')">Book Free Consultation →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ SMSF PAGE ═══════════════ -->
+<div class="page" id="page-smsf">
+  <div class="page-hero">
+    <div class="section-inner">
+      <div class="section-label">SMSF Lending</div>
+      <h1>Grow Your Super With Property</h1>
+      <p>Competitive SMSF loans for residential and commercial property. Borrow up to 90% LVR with rates from 6.29% p.a. through Australia's top SMSF lenders.</p>
+      <a class="btn btn-gold" onclick="showPage('contact')">Get a Free SMSF Assessment →</a>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">SMSF Products</div>
+      <div class="section-title">Residential & Commercial SMSF Loans</div>
+      <p class="section-sub">We source the best SMSF lending products from our extensive panel, matching the right lender to your fund's needs.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-tag">Most Popular</div>
+            <h3>Residential SMSF Loan</h3>
+            <p>Investment properties for your SMSF portfolio</p>
+          </div>
+          <div class="product-rate">
+            <div class="product-rate-num">6.29%</div>
+            <div class="product-rate-label">p.a. variable | Comparison 6.65%*</div>
+          </div>
+          <div class="product-body">
+            <ul class="product-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Borrow up to 90% LVR</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Maximum loan $10M</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>100% offset account available</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No application or settlement fees</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Purchase & refinance available</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Past credit issues considered</li>
+            </ul>
+            <a class="btn btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Apply Now →</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-tag gold">Business</div>
+            <h3>Commercial SMSF Loan</h3>
+            <p>Commercial premises & owner-occupier setups</p>
+          </div>
+          <div class="product-rate">
+            <div class="product-rate-num">6.89%</div>
+            <div class="product-rate-label">p.a. variable</div>
+          </div>
+          <div class="product-body">
+            <ul class="product-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Borrow up to 80% LVR</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Maximum loan $4M</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Suitable for owner-occupiers</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Wide range of property types</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No minimum contributions required</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Fast approval turnaround</li>
+            </ul>
+            <a class="btn btn-outline" onclick="showPage('contact')" style="width:100%;justify-content:center;">Enquire Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMSF FAQ -->
+  <section style="background:var(--gray-100);">
+    <div class="section-inner">
+      <div class="section-label">Frequently Asked Questions</div>
+      <div class="section-title">Understanding SMSF Lending</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What is an SMSF loan?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>An SMSF loan (or Limited Recourse Borrowing Arrangement) allows your self-managed super fund to borrow money to purchase an investment property. The property is held in a separate custodian trust until the loan is fully repaid, at which point the SMSF acquires full title. Rental income and super contributions service the loan.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How much can I borrow with an SMSF?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Depending on the lender and your fund's financials, you can borrow up to 90% of the property value for residential, and up to 80% for commercial properties. Maximum loan amounts range from $3M to $10M depending on the product and scenario. Your borrowing capacity is assessed based on the SMSF's income — including employer contributions, voluntary contributions, rental income, and investment returns.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Are there restrictions on SMSF property purchases?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Yes. You cannot live in a residential property purchased through your SMSF, and you cannot sell a residential property you personally own to your SMSF. Construction loans within an SMSF are also generally not available. Commercial property rules are more flexible — owner-occupied business premises and related party transactions are permitted in certain circumstances.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How long does SMSF loan approval take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>SMSF lending is more complex than standard home loans. Typically, it takes about one week to collate documents, and another week or so for assessment and approval. We recommend starting the process at least two weeks before actively searching for a property. Our team works to expedite this wherever possible.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Can I refinance my existing SMSF loan?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Absolutely. Many of our clients refinance their SMSF loans to access better rates or improved loan features. We compare options across our lender panel to find the best refinance deal for your fund. The process is straightforward and can result in significant annual savings.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-banner">
+      <h2>Get Your Free SMSF Lending Assessment</h2>
+      <p>Our SMSF specialists will review your fund and identify the best lending options. No cost, no obligation.</p>
+      <a class="btn btn-gold" onclick="showPage('contact')">Request Assessment →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ HOME LOANS PAGE ═══════════════ -->
+<div class="page" id="page-homeloans">
+  <div class="page-hero">
+    <div class="section-inner">
+      <div class="section-label">Home Loans</div>
+      <h1>Find the Right Home Loan, Faster</h1>
+      <p>First home buyers, upgraders, investors & refinancers — we compare 40+ lenders to secure competitive rates and the right loan structure for you.</p>
+      <a class="btn btn-gold" onclick="showPage('contact')">Check Your Borrowing Power →</a>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">Home Loan Products</div>
+      <div class="section-title">Loans for Every Stage of Life</div>
+      <p class="section-sub">From your first property to your investment portfolio — we match you with the right product from our extensive panel.</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-tag">Owner Occupied</div>
+            <h3>Standard Variable Home Loan</h3>
+            <p>Flexible features for owner-occupiers</p>
+          </div>
+          <div class="product-rate">
+            <div class="product-rate-num">5.89%</div>
+            <div class="product-rate-label">p.a. variable | Comparison 5.95%*</div>
+          </div>
+          <div class="product-body">
+            <ul class="product-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Borrow up to 95% LVR (with LMI)</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>100% offset account</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited extra repayments</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Redraw facility available</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Split loan option (fixed + variable)</li>
+            </ul>
+            <a class="btn btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Apply Now →</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-tag gold">Investor</div>
+            <h3>Investment Property Loan</h3>
+            <p>Grow your property portfolio</p>
+          </div>
+          <div class="product-rate">
+            <div class="product-rate-num">6.19%</div>
+            <div class="product-rate-label">p.a. variable | Comparison 6.25%*</div>
+          </div>
+          <div class="product-body">
+            <ul class="product-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Borrow up to 90% LVR</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Interest-only option available</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Cross-collateralisation options</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Rental income considered</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Tax-effective structuring advice</li>
+            </ul>
+            <a class="btn btn-outline" onclick="showPage('contact')" style="width:100%;justify-content:center;">Enquire Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we help -->
+  <section style="background:var(--gray-100);">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Who We Help</div>
+      <div class="section-title">A Loan for Every Goal</div>
+      <div class="services-grid" style="margin-top:40px;">
+        <div class="service-card">
+          <div class="service-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>First Home Buyers</h3>
+          <p>Navigate grants, stamp duty concessions, and the First Home Guarantee. We simplify the process and help you step on the ladder.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9"/></svg>
+          </div>
+          <h3>Refinancers</h3>
+          <p>Paying too much? We compare your current loan against 40+ lenders to find savings — often thousands per year. Free of charge.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon navy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B1D3A" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Self-Employed</h3>
+          <p>Alternative documentation loans for business owners. Low-doc and alt-doc options through specialist lenders like Pepper and Bluestone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-banner">
+      <h2>Compare Home Loans in Minutes</h2>
+      <p>Tell us about your situation and we'll match you with the best products from our lender panel. Free, fast, and no obligation.</p>
+      <a class="btn btn-gold" onclick="showPage('contact')">Get Started →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ CONTACT PAGE ═══════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="section-inner">
+      <div class="section-label">Contact Us</div>
+      <h1>Let's Talk About Your Lending Needs</h1>
+      <p>Whether you have a quick question or want a full assessment — our team is ready to help. No pressure, just honest guidance.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Get In Touch</div>
+          <div class="section-title">We're Here to Help</div>
+          <p class="section-sub" style="margin-bottom:32px;">Visit our West Ryde office or reach out online. We typically respond within a few hours during business days.</p>
+          <div class="contact-info-cards">
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4>Visit Our Office</h4>
+                <p>West Ryde, NSW 2114<br>Sydney, Australia</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <h4>Call Us</h4>
+                <p>(02) 9809 5888<br>Mon–Fri, 9am–5:30pm</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <h4>Email Us</h4>
+                <p>info@auswiseloans.com.au</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:24px;">Request a Callback</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="04XX XXX XXX">
+            </div>
+            <div class="form-group full">
+              <label>I'm interested in...</label>
+              <select>
+                <option>SMSF Loan — Residential</option>
+                <option>SMSF Loan — Commercial</option>
+                <option>Home Loan — First Home Buyer</option>
+                <option>Home Loan — Refinance</option>
+                <option>Investment Property Loan</option>
+                <option>Other / General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>Tell us more (optional)</label>
+              <textarea placeholder="Any details about your situation, property value, loan amount, or questions..."></textarea>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button class="btn btn-gold" style="width:100%;justify-content:center;">Submit Enquiry →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" onclick="showPage('home')">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="logo-text">Auswise<span>Loans</span></div>
+      </a>
+      <p class="footer-desc">SMSF & home loan specialists based in West Ryde, Sydney. 30+ years of trusted financial expertise, helping Australians achieve their property goals.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a onclick="showPage('smsf')" href="#">SMSF Loans</a>
+      <a onclick="showPage('homeloans')" href="#">Home Loans</a>
+      <a onclick="showPage('homeloans')" href="#">Refinancing</a>
+      <a onclick="showPage('homeloans')" href="#">Investment Loans</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a onclick="showPage('home')" href="#">About Us</a>
+      <a onclick="showPage('contact')" href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Credit Guide</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">West Ryde, NSW 2114</a>
+      <a href="tel:0298095888">(02) 9809 5888</a>
+      <a href="mailto:info@auswiseloans.com.au">info@auswiseloans.com.au</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Auswise Loans. All rights reserved.</span>
+    <span>Australian Credit Licence No. XXXXXX</span>
+  </div>
+  <div class="footer-legal">
+    *WARNING: The comparison rates are true only for the examples given and may not include all fees and charges. Different terms, fees or other loan amounts might result in a different comparison rate. Rates are indicative only and subject to change. This website provides general information only and does not constitute financial advice. Auswise Loans recommends that you seek independent financial and taxation advice before making any decision based on this information. All applications are subject to lender credit approval. Terms and conditions apply.
+  </div>
+</footer>
+
+<script>
+// ─── SPA Navigation ───
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── Header scroll effect ───
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ─── FAQ Toggle ───
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ─── Mobile Menu ───
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '64px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'white';
+    links.style.padding = '16px 24px';
+    links.style.boxShadow = '0 8px 30px rgba(0,0,0,0.1)';
+    links.style.borderRadius = '0 0 16px 16px';
+  }
+}
+</script>
+</body>
+</html>
